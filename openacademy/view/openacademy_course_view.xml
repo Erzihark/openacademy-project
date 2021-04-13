@@ -9,6 +9,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="responsible_id"/>
                     </group>
                     <notebook>
                         <page string="Description">
@@ -34,6 +35,18 @@
           </field>
          </record>
 
+                 <!-- override the automatically generated list view for courses -->
+         <record model="ir.ui.view" id="course_tree_view">
+             <field name="name">course.tree</field>
+             <field name="model">openacademy.course</field>
+             <field name="arch" type="xml">
+                 <tree string="Course Tree">
+                     <field name="name"/>
+                     <field name="responsible_id"/>
+                 </tree>
+             </field>
+         </record> 
+
          <record model="ir.ui.view" id="course_search_view">
           <field name="name">course.search.view</field>
           <field name="model">openacademy.course</field>
@@ -43,6 +56,31 @@
                   <field name="description"/>
               </search>
           </field>
+         </record>
+
+         <!-- session form view -->
+         <record model="ir.ui.view" id="session_form_view">
+             <field name="name">session.form</field>
+             <field name="model">openacademy.session</field>
+             <field name="arch" type="xml">
+                 <form string="Session Form">
+                     <sheet>
+                         <group string="General">
+                             <field name="course_id"/>
+                             <field name="name"/>
+                             <field name="instructor_id"/>
+                             <field name="start_date"/>
+                             <field name="duration"/>
+                             <field name="seats"/>
+                         </group>
+                         <group string="Schedule">
+                             <field name="start_date"/>
+                             <field name="duration"/>
+                             <field name="seats"/>
+                         </group>
+                     </sheet>
+                 </form>
+             </field>
          </record>
 
          <record model="ir.actions.act_window" id="course_list_action">
