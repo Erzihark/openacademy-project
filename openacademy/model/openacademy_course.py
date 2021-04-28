@@ -1,17 +1,10 @@
-from openerp import fields, models
+class Session(models.Model):
+    _name = 'openacademy.session'
+    start_date = fields.Date()
+    duration = fields.Float(digits=(6, 2), help="Duration in days")
+    seats = fields.Integer(string="Number of seats")
+ 
+    instructor_id = fields.Many2one('res.partner', string="Instructor")
+    course_id = fields.Many2one('openacademy.course',
+        ondelete='cascade', string="Course", required=True)
 
-'''
-This module creates the model of Course
-'''
-
-class Course(models.Model):
-    '''
-    This class creates the model of Course
-    '''
-    _name = 'openacademy.course' # Model odoo name
-    
-    name = fields.Char(string='Title', required=True)  #  Field reserved to identified name rec
-    description = fields.Text(string='Description')
-    responsible_id = fields.Many2one('res.users', ondelete='set null', string='Responsible', index=True)
-
-    session_ids = fields.One2many('openacademy.session', 'course_id', string='Sessions')

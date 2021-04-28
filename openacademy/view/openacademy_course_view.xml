@@ -18,14 +18,6 @@
                         <page string="About">
                             This is an example of notebooks
                         </page>
-                        <page string="Sessions">
-                            <field name="session_ids">
-                                <tree string="Registered sessions">
-                                    <field name="name"/>
-                                    <field name="instructor_id"/>
-                                </tree> 
-                            </field>
-                        </page>
                     </notebook>
                 </sheet>
             </form>
@@ -53,7 +45,7 @@
                      <field name="responsible_id"/>
                  </tree>
              </field>
-         </record> 
+         </record>
 
          <record model="ir.ui.view" id="course_search_view">
           <field name="name">course.search.view</field>
@@ -118,3 +110,4 @@
               It is not required when it is the sole module -->
     </data>
 </openerp>
+
